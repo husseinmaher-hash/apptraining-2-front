@@ -1,5 +1,4 @@
-
-name: Frontend Local CI/CD
+name: Frontend CI/CD
 
 on:
   push:
@@ -7,15 +6,12 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest  
 
     steps:
-      - name: Pull frontend code
-        run: |
-          cd ~/ci/app/apptraining-2-front
-          git pull
+      - name: Checkout frontend code
+        uses: actions/checkout@v3
 
       - name: Rebuild frontend
         run: |
-          cd ~/ci/app
-          docker compose up --build -d frontend
+          docker compose up --build -d 
