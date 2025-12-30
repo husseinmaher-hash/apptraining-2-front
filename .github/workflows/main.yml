@@ -5,13 +5,16 @@ on:
     branches: [ "main" ]
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest  
+  build:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout frontend code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Rebuild frontend
-        run: |
-          docker compose up --build -d 
+      - name: Build and run images
+        run: docker build -t frontend-img .
+
+      - name: show images
+        run: docker images
+
