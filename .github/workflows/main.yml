@@ -34,3 +34,17 @@ jobs:
       - name: Show pushed images
         run: docker images
 
+
+
+  deploy-on-device:
+    runs-on: self-hosted
+
+    steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+
+        - name: Run docker compose on my device
+          run: |
+            cd "/home/hussein-maher/Desktop/Lx/apptraining-2"
+            docker compose down -v
+            docker compose up -d
